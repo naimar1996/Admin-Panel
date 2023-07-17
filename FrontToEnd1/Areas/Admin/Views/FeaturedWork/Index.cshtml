@@ -1,0 +1,49 @@
+﻿    @using FrontToEnd1.Areas.Admin.ViewModels.FeaturedWork
+    @model FeaturedWorkIndexVM
+  <!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Featured Works</h1>
+
+    <a class="btn btn-info" asp-action="create" asp-controller="featuredwork">Create</a> 
+    <!-- DataTales Example -->
+    <div class="card shadow mb-4">
+        <div class="card-body">
+            <div class="table-responsive">
+                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Subtitle</th>
+                            <th>Active</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach(var featuredwork in Model.FeaturedWorks)
+                        {
+
+                        <tr>
+                            <td>@featuredwork.Title</td>
+                            <td>@featuredwork.Subtitle</td>
+                            <td>
+                                    @if (featuredwork.IsDeleted)
+                                    {
+                                        <span class="text-danger">Non-active</span>
+                                    }
+                                    else
+                                    {
+                                        <span class="text-success">Active</span>
+                                    }
+                                </td>
+                        </tr>
+
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+</div>
+<!-- /.container-fluid -->
